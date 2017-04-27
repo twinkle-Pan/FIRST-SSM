@@ -106,7 +106,8 @@
             	  username:$.trim(userName),
             	  password:$.trim(password)},
               success : function(data){
-                   if(data== "success"){
+            	  data = eval('(' + data + ')');
+                   if(data.result== true){
                       $(loginError).html("&nbsp;");
                       //成功
                  /*      var rurl = $.trim($(form).attr("data-rurl"));
@@ -115,7 +116,7 @@
                       }else{
                           window.location.href = "sra_index";
                       } */
-                      alert("123");
+                      window.location.href="main";
                       return true;
                   }else {
                       $(loginError).html(data);

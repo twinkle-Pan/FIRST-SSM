@@ -58,7 +58,8 @@ public class TestController {
 	 
 	 }
 	@RequestMapping(value="/loginForm",method=RequestMethod.POST)
-	public ModelAndView login(HttpServletRequest request,User user) {
+	@ResponseBody
+	public String login(HttpServletRequest request,User user) {
 		String name=request.getParameter("username");
 		String psString=request.getParameter("password");
 		String result="";
@@ -75,14 +76,14 @@ public class TestController {
 			}
 			result = "{'result':true}";
 			System.out.println("result: " + result);
-			mv.setViewName("index");
+			//mv.setViewName("index");
 		} catch (Exception e) {
 			//logger.error(e.getMessage());
 			result = "{'result':false,'msg':'用户名或密码错误！'}";
-			mv.setViewName("login");
+			//mv.setViewName("login");
 		}
 		
-		return mv;
+		return result;
 		
 	
 		//String judge=userService.findUser(user);
@@ -91,6 +92,14 @@ public class TestController {
 		return mv;*/
 	}
 	
+	@RequestMapping(value="/main")
+	public ModelAndView mv()
+	{
+		ModelAndView mv=new ModelAndView();
+		mv.setViewName("index");
+		return mv;
+		
+	}
 	
 	 
 }
