@@ -100,7 +100,7 @@
           }
           $.ajax({
               type : "POST",
-              url : "loginForm.html?t=" + new Date().getMilliseconds(),
+              url : "loginForm?t=" + new Date().getMilliseconds(),
               async:false,
               data:{
             	  username:$.trim(userName),
